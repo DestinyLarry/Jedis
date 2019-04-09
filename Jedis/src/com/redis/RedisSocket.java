@@ -39,7 +39,7 @@ public class RedisSocket {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			//结束时管不
+			//结束时关闭
 			if(jedis != null) {
 				jedis.close();
 			}
