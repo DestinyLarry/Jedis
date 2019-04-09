@@ -6,21 +6,21 @@ import redis.clients.jedis.Jedis;
 public class RedisSocket {
 	//redisIP
 	private static String ip = "192.168.18.3";
-	//redis¶Ë¿Ú
+	//redisç«¯å£
 	private static int port = 6379;
 	
 	public static void main(String[] args)  {
-		//Á¬½Ó±¾µØµÄ Redis ·şÎñ
+		//è¿æ¥æœ¬åœ°çš„ Redis æœåŠ¡
 		Jedis  jedis = null;
 		try {
 			jedis = new Jedis(ip,port);
 			String pingResult  = jedis.ping();
-			//¼ì²éRedis·şÎñÊÇ·ñÕı³£
-	        System.out.println("pingResult = ¡¾" + pingResult + "¡¿");
-	        //»ñÈ¡redisÖĞËùÓĞµÄkey
+			//æ£€æŸ¥RedisæœåŠ¡æ˜¯å¦æ­£å¸¸
+	        System.out.println("pingResult = ã€" + pingResult + "ã€‘");
+	        //è·å–redisä¸­æ‰€æœ‰çš„key
 	        Set<String> keys = jedis.keys("*"); 
 	        Iterator<String> it=keys.iterator();
-	        //±éÀúRedisÖĞµÄkey
+	        //éå†Redisä¸­çš„key
 	        while(it.hasNext()){   
 	            String key = it.next();   
 	            //System.out.println(key);   
@@ -39,7 +39,7 @@ public class RedisSocket {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			//½áÊøÊ±¹Ü²»
+			//ç»“æŸæ—¶ç®¡ä¸
 			if(jedis != null) {
 				jedis.close();
 			}
@@ -54,15 +54,15 @@ public class RedisSocket {
 		 }
          String currentStr = cmd.substring(0, index);
          if (currentStr.startsWith("+")) {
-             System.err.println("+ status reply message£º" + currentStr.substring(1));
+             System.err.println("+ status reply messageï¼š" + currentStr.substring(1));
          } else if (currentStr.startsWith("-")) {
-             System.err.println("- error reply message£º" + currentStr.substring(1));
+             System.err.println("- error reply messageï¼š" + currentStr.substring(1));
          } else if (currentStr.startsWith(":")) {
-             System.err.println(": integer reply message£º" + currentStr.substring(1));
+             System.err.println(": integer reply messageï¼š" + currentStr.substring(1));
          } else if (currentStr.startsWith("$")) {
-             System.err.println("$ bulk reply message£º" + currentStr.substring(1));
+             System.err.println("$ bulk reply messageï¼š" + currentStr.substring(1));
          } else if (currentStr.startsWith("*")) {
-             System.err.println("* multi bulk reply message£º" + currentStr.substring(1));
+             System.err.println("* multi bulk reply messageï¼š" + currentStr.substring(1));
          }else {
              System.err.println("other message : " + currentStr);
          }
